@@ -7,8 +7,8 @@ class Solution:
             if pos[x]!=x:
                 pos[x]=find(pos[x])
             return pos[x]
-        for x,y in pairs:
-            pos[find(x)]=find(y)
+        for a,b in pairs:
+            pos[find(a)]=find(b)
         d=defaultdict(SortedList)
         for i,c in enumerate(s):
             d[find(i)].add(c)
