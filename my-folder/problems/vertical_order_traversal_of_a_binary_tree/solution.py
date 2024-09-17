@@ -7,21 +7,19 @@
 class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
         nodes=[]
-        def dfs(root,i,j):
-            if not root:
+        def dfs(node,i,j):
+            if not node:
                 return
-            nodes.append((j,i,root.val))
-            dfs(root.left,i+1,j-1)
-            dfs(root.right,i+1,j+1)
+            nodes.append((j,i+j,node.val))
+            dfs(node.left, i+1, j-1)
+            dfs(node.right, i+1, j+1)
         dfs(root, 0, 0)
         nodes.sort()
-        ans=[]
-        prev=-2000
-        for j,_,value in nodes:
+        resp=[]
+        prev=-200000
+        for j,i,value in nodes:
             if prev!=j:
-                ans.append([])
+                resp.append([])
                 prev=j
-            ans[-1].append(value)
-        return ans
-
-        
+            resp[-1].append(value)
+        return resp
